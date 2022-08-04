@@ -13,6 +13,7 @@ export class GetConnectDataBaseConfig {
       const getFileConfig: connectDataBaseConfig_type = JSON.parse(fs.readFileSync('school_schedule.config', 'utf8'));
       process.env.DB_INSTITUTION = getFileConfig.institution;
       process.env.DB_NAME = getFileConfig.path;
+      process.env.LANG = getFileConfig.lang;
       return "succes";
     } catch (err: any) {
       return err;

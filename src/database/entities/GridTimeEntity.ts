@@ -1,20 +1,24 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/no-cycle */
-import { Column, Entity, ManyToOne } from "typeorm";
+/* eslint-disable */
+import {
+  Column, Entity, OneToMany,
+} from "typeorm";
 import { BaseEntity } from "./DefaultEntity";
-import { Shift } from "./ShiftEntity";
+import { TeamDetail } from "./TeamDetailEntity";
+import { ShiftDetail } from "./ShiftDetailEntity";
 
-@Entity("gridtime")
+@Entity("gridTime")
 export class GridTime extends BaseEntity {
   @Column()
   name: string;
 
   @Column()
-  description: string;
+  position: number;
 
-  @Column({ default: false })
-  disable: boolean;
+  @OneToMany(() => ShiftDetail,
+    (shiftDetail) => shiftDetail.gridTime)
+  shiftDetail: ShiftDetail[];
 
-  @ManyToOne(() => Shift, (shift) => shift.id)
-  shift: Shift;
+  @OneToMany(() => TeamDetail,
+    (teamDetail) => teamDetail.gridTime)
+    teamDetail: TeamDetail[];
 }

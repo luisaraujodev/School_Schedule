@@ -1,0 +1,46 @@
+[
+  {
+    "group": "",
+    "itens": [    
+      {
+        "icon": "cronograma",
+        "name": "Cronograma Escola",
+        "url": "/schedule"
+      }
+    ]
+  },
+  {
+    "group": "Cadastro",
+    "itens": [
+      {
+        "icon": "Time",
+        "name": "Hórario de Aula",
+        "url": "/"
+      },
+      {
+        "name": "Turno",
+        "url": "/Shift"
+      },
+      {
+        "name": "Ensino/Curso",
+        "url": "/Teaching"
+      },
+      {
+        "name": "Disciplinas",
+        "url": "/Subjects"
+      },
+      {
+        "name": "Professores",
+        "url": "/Teachers"
+      },
+      {
+        "name": "Série/Módulo",
+        "url": "/Series"
+      },
+      {
+        "name": "Turma",
+        "url": "/Team"
+      }
+    ]
+  }
+]

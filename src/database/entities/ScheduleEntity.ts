@@ -1,15 +1,17 @@
 /* eslint-disable*/
-import { Column, Entity, JoinColumn, OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "./DefaultEntity";
-import { Classes } from "./ClassesEntity";
+import { ScheduleDetail } from "./ScheduleDetailEntity";
+import { Shift } from "./ShiftEntity";
+import { Team } from "./TeamEntity";
 
 @Entity("schedule")
 export class Schedule extends BaseEntity {
-  @Column()
-  name: string;
-
-  @OneToMany(() => Classes,
-    (classes) => classes.id)
+  @ManyToOne(() => Shift, { cascade: true, eager: true })
   @JoinColumn()
-  classes: Classes[];
+  shift: Shift;
+
+  @OneToMany(() => ScheduleDetail,
+    (scheduleDetail) => scheduleDetail.schedule, { cascade: true, eager: true })
+  scheduleDetail: ScheduleDetail[];
 }

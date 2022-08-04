@@ -1,13 +1,14 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable class-methods-use-this */
+/* eslint-disable*/
 import { CreateScheduleService, IRequest } from "../services/CreateScheduleServices";
 
+export interface createScheduleType extends IRequest {
+};
+
 export class CreateScheduleController {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async handle({ name }: IRequest) {
+  async handle({ shiftID, scheduleDetai }: IRequest) {
     const createService = new CreateScheduleService();
 
-    const result = await createService.execute({ name });
+    const result = await createService.execute({ shiftID, scheduleDetai });
 
     if (result instanceof Error) {
       return result.message;

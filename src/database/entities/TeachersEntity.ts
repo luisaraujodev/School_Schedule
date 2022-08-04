@@ -4,9 +4,12 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  ManyToOne,
+  OneToMany,
 } from "typeorm";
 
 import { BaseEntity } from "./DefaultEntity";
+import { Shift } from "./ShiftEntity";
 import { Subjects } from "./SubjectsEntity";
 import { TeachersRestrictions } from "./TeachersRestrictionsEntity";
 
@@ -15,14 +18,18 @@ export class Teachers extends BaseEntity {
   @Column()
   name: string;
 
+  @ManyToMany(() => Shift, { cascade: true, eager: true })
+  @JoinTable()
+  shift: Shift[];
+
+  @ManyToMany(() => Subjects, { cascade: true, eager: true })
+  @JoinTable()
+  subjects: Subjects[]
+
   @Column()
   workload: number;
 
-  @ManyToMany(() => TeachersRestrictions)
-  @JoinTable()
+  @OneToMany(() => TeachersRestrictions,
+    (teachersRestrictions) => teachersRestrictions.teacher, { cascade: true, eager: true })
   teachersRestrictions: TeachersRestrictions[];
-
-  @ManyToMany(() => Subjects)
-  @JoinTable()
-  subject: Subjects[];
 }

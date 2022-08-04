@@ -1,31 +1,25 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/named */
-/* eslint-disable import/no-cycle */
+/* eslint-disable */
 import {
-  Column, Entity, OneToMany,
+  Column, Entity, ManyToMany, ManyToOne, OneToMany, OneToOne,
 } from "typeorm";
 import { BaseEntity } from "./DefaultEntity";
-import { Classes } from "./ClassesEntity";
-import { GridTime } from "./GridTimeEntity";
-import { GridWeek } from "./GridWeekEntity";
+import { ShiftDetail } from "./ShiftDetailEntity";
+import { Team } from "./TeamEntity";
 
 @Entity("shift")
 export class Shift extends BaseEntity {
   @Column()
   name: string;
 
-  @OneToMany(() => GridTime,
-    (gridtime) => gridtime.id,
-    { cascade: true, eager: true })
-  gridtime: GridTime[];
+  @OneToMany(() => Team,
+    (teams) => teams.shift)
+  teams: Team[];
 
-  @OneToMany(() => GridWeek,
-    (gridweek) => gridweek.id,
-    { cascade: true, eager: true })
-  gridweek: GridWeek[];
+  // @OneToMany(() => Teachers,
+  //   (teachers) => teachers.subjects)
+  // teachers: Teachers[];
 
-  @OneToMany(() => Classes,
-    (classes) => classes.id,
-    { cascade: true, eager: true })
-  classes: Classes[];
+  @OneToMany(() => ShiftDetail,
+    (shiftDetail) => shiftDetail.shift, { cascade: true, eager: true })
+  shiftDetail: ShiftDetail[];
 }

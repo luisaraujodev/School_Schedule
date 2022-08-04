@@ -3,11 +3,12 @@ import fs from "fs";
 import { connectDataBaseConfig_type } from "../types/ConnectDataBaseConfig";
 
 export class CreateConnectDataBaseConfig {
-  async execute({ institution, path }: connectDataBaseConfig_type): Promise<string | Error> {
+  async execute({ institution, path,lang }: connectDataBaseConfig_type): Promise<string | Error> {
 
     const configDataBase: connectDataBaseConfig_type = {
       institution: institution || "",
       path: path + "database/school_schedule.db",
+      lang: lang || "",
       created_at: new Date().toJSON(),
     }
 

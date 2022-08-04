@@ -1,0 +1,15 @@
+{
+  "CLASSES_ALREADY_EXISTS": "As aulas já existem",
+  "GRIDTIME_ALREADY_EXISTS": "O horário da grade já existe",
+  "GRIDWEEK_ALREADY_EXISTS": "A grade semanal já existe",
+  "SCHEDULE_ALREADY_EXISTS": "O horário já existe",
+  "SHIFT_DOES_NOT_EXISTS": "O turno não existe",
+  "SHIFT_EXISTS": "O turno existe",
+  "SUBJECT_DOES_NOT_EXISTS": "O assunto não existe",
+  "TEACHER_DOES_NOT_EXISTS": "Professor não existe",
+  "WORKLOAD_INCORRET": "Carga de trabalho incorreta",
+  "ERROR_UNABLE_TO_REGISTER": "Não foi possível realizar o cadastro",
+  "NAME_OR_SURNAME_ALREADY_EXISTS":"nome ou Apelido já existe",
+  "MANDATORY_NAME": "Nome obrigatório",
+  "MANDATORY_NICKNAME": "Apelido obrigatório"
+}

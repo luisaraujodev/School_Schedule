@@ -1,21 +1,44 @@
 /* eslint-disable*/
 import {
+  Column,
   Entity,
   JoinTable,
   ManyToMany,
+  ManyToOne,
+  OneToOne
 } from "typeorm";
 
 import { BaseEntity } from "./DefaultEntity";
+import { Teachers } from "./TeachersEntity";
 import { GridTime } from "./GridTimeEntity";
-import { GridWeek } from "./GridWeekEntity";
 
-@Entity("TeachersRestrictions")
+@Entity("teachersRestrictions")
 export class TeachersRestrictions extends BaseEntity {
-  @ManyToMany(() => GridTime)
-  @JoinTable()
-  time: GridTime[];
+  @ManyToOne(() => Teachers,
+    (teacher) => teacher.teachersRestrictions)
+  teacher: Teachers;
 
-  @ManyToMany(() => GridWeek)
-  @JoinTable()
-  gridweek: GridWeek[];
+  @OneToOne(() => GridTime, (gridTime) => gridTime.id)
+  gridTime: GridTime;
+
+  @Column({ default: false })
+  mon: boolean;
+
+  @Column({ default: false })
+  tue: boolean;
+
+  @Column({ default: false })
+  wed: boolean;
+
+  @Column({ default: false })
+  thu: boolean;
+
+  @Column({ default: false })
+  fri: boolean;
+
+  @Column({ default: false })
+  sat: boolean;
+
+  @Column({ default: false })
+  sun: boolean;
 }
